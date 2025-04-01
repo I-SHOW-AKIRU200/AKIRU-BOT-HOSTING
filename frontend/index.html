@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Hosting</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Telegram Bot Hosting</h1>
+            <p>Host and manage your Telegram bots easily</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Authentication Section -->
+        <div class="auth-section" id="authSection">
+            <div class="auth-card">
+                <h2>Login</h2>
+                <div class="alert alert-error" id="errorAlert"></div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn" id="loginBtn">Login</button>
+                    <p style="text-align: center; margin-top: 15px;">First time? Any username/password works</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div class="dashboard" id="dashboard">
+            <div class="welcome-message">
+                Welcome, <span id="usernameDisplay"></span>!
+            </div>
+
+            <div class="tab-bar">
+                <div class="tab active" data-tab="bots">My Bots</div>
+                <div class="tab" data-tab="upload">Upload Bot</div>
+                <div class="tab" data-tab="settings">Settings</div>
+            </div>
+
+            <!-- Bots Tab -->
+            <div class="tab-content active" id="botsTab">
+                <div class="alert alert-success" id="successAlert"></div>
+                <div class="alert alert-error" id="errorAlert"></div>
+                
+                <h2>Your Bots</h2>
+                <div class="bot-list" id="botList">
+                    <!-- Bots will be loaded here -->
+                </div>
+
+                <div id="botDetails" style="display: none; margin-top: 30px;">
+                    <h3 id="selectedBotName"></h3>
+                    
+                    <div class="bot-actions">
+                        <button class="btn" id="startBotBtn">Start</button>
+                        <button class="btn" id="stopBotBtn" style="display: none;">Stop</button>
+                        <button class="btn btn-secondary" id="restartBotBtn">Restart</button>
+                        <button class="btn btn-secondary" id="deleteBotBtn">Delete</button>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <h4>Bot Logs</h4>
+                        <div class="log-container" id="botLogs">
+                            <!-- Logs will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Tab -->
+            <div class="tab-content" id="uploadTab">
+                <div class="upload-section">
+                    <h2>Upload New Bot</h2>
+                    <p>Upload your Python Telegram bot script (.py file)</p>
+                    
+                    <form id="uploadForm">
+                        <input type="file" id="botFile" class="file-input" accept=".py">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon material-icons">cloud_upload</div>
+                            <p>Click to select or drag your bot file here</p>
+                            <p class="text-muted">Only .py files are accepted</p>
+                        </div>
+                        <div class="selected-file" id="selectedFile"></div>
+                        <button type="submit" class="btn" id="uploadBtn" style="margin-top: 20px;" disabled>Upload Bot</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settingsTab">
+                <div class="settings-section">
+                    <h2>Settings</h2>
+                    
+                    <div class="settings-item">
+                        <h4>Backend Configuration</h4>
+                        <div class="form-group">
+                            <label for="backendUrl">Backend URL</label>
+                            <input type="text" id="backendUrl" class="form-control" placeholder="https://your-repl-backend.repl.co">
+                        </div>
+                        <button class="btn" id="saveBackendBtn">Save</button>
+                    </div>
+                    
+                    <div class="settings-item">
+                        <h4>Account</h4>
+                        <p>Username: <span id="settingsUsername"></span></p>
+                    </div>
+                    
+                    <div class="settings-item">
+                        <h4>Actions</h4>
+                        <p class="logout-btn" id="logoutBtn"><span class="material-icons" style="vertical-align: middle;">logout</span> Logout</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
